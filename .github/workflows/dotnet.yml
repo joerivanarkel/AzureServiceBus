@@ -10,7 +10,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    environment: environment
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -21,9 +21,5 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-      env:
-        connectionstring: ${{ secrets.CONNECTIONSTRING }}
     - name: Test
       run: dotnet test
-      env:
-        connectionstring: ${{ secrets.CONNECTIONSTRING }}
