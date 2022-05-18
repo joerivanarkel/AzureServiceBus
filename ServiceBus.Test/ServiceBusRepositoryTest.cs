@@ -1,4 +1,5 @@
 using Azure.Messaging.ServiceBus;
+using UserSecrets;
 using Xunit;
 
 namespace ServiceBus.Test;
@@ -8,7 +9,7 @@ public class ServiceBusRepositoryTest
     [Fact]
     public void ShouldSendMessage()
     {
-        string connectionString = SecretConfiguration.GetSecret();
+        string connectionString = UserSecrets<ServiceBusRepositoryTest>.GetSecret("connectionstring");
         ServiceBusClient serviceBusCLient = new ServiceBusClient(connectionString);
         ServiceBusRepository serviceBusRepository = new ServiceBusRepository(serviceBusCLient);
         var result = serviceBusRepository.SendMessage();
@@ -19,7 +20,7 @@ public class ServiceBusRepositoryTest
     [Fact]
     public void ShouldRecieveMessage()
     {
-        string connectionString = SecretConfiguration.GetSecret();
+        string connectionString = UserSecrets<ServiceBusRepositoryTest>.GetSecret("connectionstring");
         ServiceBusClient serviceBusCLient = new ServiceBusClient(connectionString);
         ServiceBusRepository serviceBusRepository = new ServiceBusRepository(serviceBusCLient);
         serviceBusRepository.SendMessage();
