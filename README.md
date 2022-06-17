@@ -7,7 +7,7 @@ Sending and Receiving messages from Azure Service Bus
 To work with a Azure Service Bus, you will have to use the ServiceBusClient to interact with this resource.
 
 ## Sending a Message to a Queue
-To send a message to the Queue, you have to use the `ServiceBusClient` to create a Sender with the queuename. Secondly you have to create a `ServiceBusMessage`, with the message for the body. Then you await the `SendMessageAsync()` method and finally close the connection with the `CloseAsync()` method.
+To send a message to the Queue, you have to use the `ServiceBusClient` to create a Sender with the queue name. Secondly you have to create a `ServiceBusMessage`, with the message for the body. Then you await the `SendMessageAsync()` method and finally close the connection with the `CloseAsync()` method.
 
 ```csharp
 var serviceBusSender = _serviceBusClient.CreateSender("testqueue");
